@@ -16,4 +16,13 @@ const createMahasiswa = async (req, res) => {
   })
 }
 
-module.exports = { getAllMahasiswa, createMahasiswa }
+const getMahasiswaById = async (req, res) => {
+  const mahasiswa = await mahasiswaService.getMahasiswaById(req.params.id)
+  if (!mahasiswa) res.status(404).json({ message: "Mahasiswa tidak ditemukan"})
+  res.status(200).json({
+    message: "Sukses dalam mengambil data",
+    data: mahasiswa
+  })
+}
+
+module.exports = { getAllMahasiswa, createMahasiswa, getMahasiswaById }
