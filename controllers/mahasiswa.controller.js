@@ -8,4 +8,12 @@ const getAllMahasiswa = async (req, res) => {
   })
 }
 
-module.exports = { getAllMahasiswa }
+const createMahasiswa = async (req, res) => {
+  const createdMahasiswa = await mahasiswaService.createMahasiswa(req.body)
+  res.status(201).json({
+    message: "Sukses menambah mahasiswa",
+    data: createdMahasiswa
+  })
+}
+
+module.exports = { getAllMahasiswa, createMahasiswa }
